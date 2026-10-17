@@ -1,0 +1,20 @@
+[project]
+name = "utility-bot"
+version = "1.0.0"
+description = "A Discord utility bot: reminders, polls, book price lookups and stats."
+requires-python = ">=3.11"
+dependencies = ["discord.py>=2.4,<3", "python-dotenv>=1.0"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "pytest-asyncio>=0.23"]
+
+[project.scripts]
+utility-bot = "utility_bot.__main__:main"
+
+[tool.setuptools.packages.find]
+include = ["utility_bot*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+filterwarnings = ["ignore:'audioop' is deprecated:DeprecationWarning"]

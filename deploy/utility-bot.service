@@ -1,0 +1,29 @@
+# systemd service: keeps utility-bot online 24/7 and restarts it if it crashes.
+# Installed by deploy/install.sh to /etc/systemd/system/utility-bot.service
+[Unit]
+Description=utility-bot Discord bot
+Wants=network-online.target
+After=network-online.target
+# Give up if it crashes more than 10 times in 5 minutes (something is badly wrong).
+StartLimitIntervalSec=300
+StartLimitBurst=10
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/home/ubuntu/utility-bot
+ExecStart=/home/ubuntu/utility-bot/.venv/bin/python -m utility_bot
+Environment=PYTHONUNBUFFERED=1
+Restart=on-failure
+RestartSec=10
+# Exit code 2 = bad/missing token. Restarting won't fix that, so don't loop.
+RestartPreventExitStatus=2
+# Hardening: the whole filesystem is read-only to the bot except its own data and logs.
+# (It only ever reads the price-tracker database.)
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ReadWritePaths=/home/ubuntu/utility-bot/data /home/ubuntu/utility-bot/logs
+
+[Install]
+WantedBy=multi-user.target
