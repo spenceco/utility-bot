@@ -129,8 +129,7 @@ The tests cover time parsing, reminder storage (including surviving a reconnect)
 On the server (Ubuntu, user `ubuntu`, project in `~/utility-bot`):
 
 ```bash
-cp .env.example .env && nano .env     # add DISCORD_TOKEN
-bash deploy/install.sh               # venv, deps, installs + starts the service
+bash deploy/set-token.sh             # prompts for the token (hidden), then installs + starts the service
 journalctl -u utility-bot -f         # live logs
 ```
 
