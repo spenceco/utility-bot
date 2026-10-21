@@ -16,17 +16,15 @@ A Discord bot built with Python and **discord.py** slash commands. It has remind
 | `/stats` | Uptime, server count, latency, commands used (this session and all time), top commands |
 | `/help` | Lists every command with an example |
 
-<!-- SCREENSHOTS
 ## Screenshots
 
 | /help | /remind | Reminder delivered |
 |---|---|---|
-| ![help](docs/screenshots/help.png) | ![remind](docs/screenshots/remind.png) | ![delivered](docs/screenshots/reminder-delivered.png) |
+| ![help](docs/screenshots/help.jpg) | ![remind](docs/screenshots/remind.jpg) | ![delivered](docs/screenshots/reminder-delivered.jpg) |
 
 | /poll | /price | /stats |
 |---|---|---|
-| ![poll](docs/screenshots/poll.png) | ![price](docs/screenshots/price.png) | ![stats](docs/screenshots/stats.png) |
-SCREENSHOTS -->
+| ![poll](docs/screenshots/poll.jpg) | ![price](docs/screenshots/price.jpg) | ![stats](docs/screenshots/stats.jpg) |
 
 ## Features at a glance
 

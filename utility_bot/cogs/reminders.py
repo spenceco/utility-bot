@@ -16,7 +16,7 @@ import discord
 from discord import app_commands
 from discord.ext import commands, tasks
 
-from ..core.formatting import humanize_duration, truncate
+from ..core.formatting import truncate
 from ..core.reminders import MAX_ACTIVE_PER_USER, MAX_MESSAGE_LENGTH, Reminder
 from ..core.timeparse import TimeParseError, parse_duration, validate_reminder_delay
 from ..errors import UserFacingError
@@ -85,7 +85,7 @@ class Reminders(commands.Cog):
         embed = discord.Embed(title="⏰ Reminder set", description=message, colour=REMINDER_COLOUR)
         embed.add_field(
             name="When",
-            value=f"<t:{reminder.due_at}:F>\n(<t:{reminder.due_at}:R>, in {humanize_duration(delay)})",
+            value=f"<t:{reminder.due_at}:F>\n<t:{reminder.due_at}:R>",
         )
         embed.set_footer(text=f"Reminder #{reminder.id} · cancel with /reminders cancel")
         await interaction.response.send_message(embed=embed, ephemeral=True)
